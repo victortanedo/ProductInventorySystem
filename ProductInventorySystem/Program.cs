@@ -32,7 +32,7 @@ class Program
             switch (choice)
             {
                 case "1":
-                    // Intentional bug: Not handling input correctly
+
                     Console.Write("Enter Product Name: ");
                     string name = Console.ReadLine();
                     Console.Write("Enter Product Price: ");
