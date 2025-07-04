@@ -26,7 +26,6 @@ class Program
             Console.WriteLine("9. Exit");
             Console.Write("Choose an option: ");
 
-            // Intentional bug: Not validating user input properly
             string choice = Console.ReadLine();
 
             switch (choice)
