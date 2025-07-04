@@ -18,13 +18,18 @@ public class Inventory
 
     public void UpdateProduct(int id, Product updatedProduct)
     {
-        // Intentional bug: Incorrect index access
+        if (updatedProduct == null)
+        {
+            throw new ArgumentNullException(nameof(updatedProduct));
+        }
+
         if (id < 0 || id >= products.Count)
         {
-            Console.WriteLine("Product not found.");
-            return;
+            throw new ArgumentOutOfRangeException(nameof(id), "Product not found.");
         }
-        products[id] = updatedProduct; // This line may cause an error if id is out of range
+
+        updatedProduct.Id = id;  // Ensure ID consistency
+        products[id] = updatedProduct;
     }
 
     public void DeleteProduct(int id)
