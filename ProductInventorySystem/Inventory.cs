@@ -35,7 +35,7 @@ public class Inventory
     public void DeleteProduct(int id)
     {
         // Intentional bug: Off-by-one error
-        if (id < 0 || id > products.Count - 1) // Should be id >= products.Count
+        if (id < 0 || id >= products.Count - 1) // Should be id >= products.Count
         {
             Console.WriteLine("Product not found.");
             return;
