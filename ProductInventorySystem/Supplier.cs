@@ -11,34 +11,30 @@ public class Supplier
     public Supplier(int supplierId, string name, string contactInfo)
     {
         SupplierId = supplierId;
-        // Intentional bug: Not initializing Name (should be: Name = name;)
-        Name = null;
+        Name = name; // Fixed: Initialize Name
         ContactInfo = contactInfo;
         ProductIds = new List<int>();
     }
 
     public void AddProduct(int productId)
     {
-        ProductIds.Add(productId);
-        // Intentional bug: Adding the same productId twice
-        // ProductIds.Add(productId);
+        if (!ProductIds.Contains(productId)) // Prevent adding duplicate productId
+        {
+            ProductIds.Add(productId);
+        }
     }
 
     public void RemoveProduct(int productId)
     {
-        // Intentional bug: Not checking if productId exists before removing
-        ProductIds.Remove(productId);
-        // Intentional bug: Removing by index instead of value
-        // ProductIds.RemoveAt(productId);
+        if (ProductIds.Contains(productId)) // Check if productId exists before removing
+        {
+            ProductIds.Remove(productId);
+        }
     }
 
     public void DisplaySupplierInfo()
     {
         Console.WriteLine($"Supplier ID: {SupplierId}, Name: {Name}, Contact: {ContactInfo}");
-        // Intentional bug: Not displaying ProductIds correctly (should use string.Join)
-        // Console.WriteLine("Supplied Product IDs: " + ProductIds);
-        Console.WriteLine("Supplied Product IDs: " + string.Join(", ", ProductIds));
-        // Intentional bug: Printing only the first product ID
-        // if (ProductIds.Count > 0) Console.WriteLine("First Product ID: " + ProductIds[0]);
+        Console.WriteLine("Supplied Product IDs: " + string.Join(", ", ProductIds)); // Use string.Join for display
     }
 }
