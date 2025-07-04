@@ -22,8 +22,8 @@ public class Product
     }
 
     // Intentional bug: Incorrect data type for price
-    // public void SetPrice(string price)
-    // {
-    //     Price = decimal.Parse(price); // This will throw an error if price is not a valid decimal
-    // }
+    public void SetPrice(string price)
+    {
+        Price = decimal.Parse(price); // This will throw an error if price is not a valid decimal
+    }
 }
